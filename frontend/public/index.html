@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MisInfo Detector AI - Advanced Misinformation Detection</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-shield-alt nav-icon"></i>
+                    <span>MisInfo Detector AI</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link active" data-view="home">Home</a>
+                    <a href="#dashboard" class="nav-link" data-view="dashboard">Dashboard</a>
+                    <a href="#realtime" class="nav-link" data-view="realtime">Real-time</a>
+                    <a href="#analytics" class="nav-link" data-view="analytics">Analytics</a>
+                    <a href="#settings" class="nav-link" data-view="settings">Settings</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home/Landing View -->
+        <section id="home-view" class="view active">
+            <div class="hero-section">
+                <div class="hero-bg-3d">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                    <div class="floating-shape shape-4"></div>
+                    <div class="particles-container">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <h1 class="hero-title">AI-Powered Misinformation Detection</h1>
+                    <p class="hero-subtitle">Advanced algorithms to identify and analyze potentially false information in real-time</p>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-analyses">12,847</div>
+                            <div class="stat-label">Analyses Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="accuracy-rate">95.3%</div>
+                            <div class="stat-label">Accuracy Rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="detection-count">3,421</div>
+                            <div class="stat-label">Misinformation Detected</div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn--primary btn--lg cta-button" data-view="dashboard">
+                            <i class="fas fa-rocket"></i>
+                            Start Analysis
+                        </button>
+                        <button class="btn btn--outline btn--lg demo-button">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard View -->
+        <section id="dashboard-view" class="view">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h2>Analysis Dashboard</h2>
+                    <p>Analyze content for potential misinformation</p>
+                </div>
+                
+                <div class="analysis-tabs">
+                    <button class="tab-btn active" data-tab="text">
+                        <i class="fas fa-file-text"></i>
+                        Text Analysis
+                    </button>
+                    <button class="tab-btn" data-tab="url">
+                        <i class="fas fa-link"></i>
+                        URL Analysis
+                    </button>
+                    <button class="tab-btn" data-tab="document">
+                        <i class="fas fa-file-upload"></i>
+                        Document Analysis
+                    </button>
+                </div>
+
+                <div class="analysis-content">
+                    <div class="tab-content active" id="text-tab">
+                        <div class="input-section">
+                            <textarea class="form-control analysis-input" placeholder="Paste the text content you want to analyze..." rows="6"></textarea>
+                            <button class="btn btn--primary analyze-btn">
+                                <i class="fas fa-search"></i>
+                                Analyze Content
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="url-tab">
+                        <div class="input-section">
+                            <input type="url" class="form-control analysis-input" placeholder="Enter URL to analyze...">
+                            <button class="btn btn--primary analyze-btn">
+                                <i class="fas fa-search"></i>
+                                Analyze URL
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="document-tab">
+                        <div class="input-section">
+                            <div class="file-upload-area">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag and drop files here or click to browse</p>
+                                <input type="file" class="file-input" accept=".pdf,.doc,.docx,.txt">
+                            </div>
+                            <button class="btn btn--primary analyze-btn">
+                                <i class="fas fa-search"></i>
+                                Analyze Document
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-results hidden">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h3>Analysis Results</h3>
+                            <div class="confidence-meter">
+                                <div class="confidence-circle">
+                                    <div class="confidence-fill"></div>
+                                    <span class="confidence-text">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-content">
+                            <div class="classification-badge">
+                                <span class="classification-text">Analyzing...</span>
+                            </div>
+                            <div class="result-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Source Credibility:</span>
+                                    <div class="credibility-bar">
+                                        <div class="credibility-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Language Patterns:</span>
+                                    <div class="patterns-list"></div>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Emotional Tone:</span>
+                                    <span class="tone-indicator"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-analyses">
+                    <h3>Recent Analyses</h3>
+                    <div class="analyses-grid" id="recent-analyses-list">
+                        <!-- Recent analyses will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-time View -->
+        <section id="realtime-view" class="view">
+            <div class="realtime-container">
+                <div class="realtime-header">
+                    <h2>Real-time Detection</h2>
+                    <p>Monitor live content streams for misinformation</p>
+                    <button class="btn btn--primary" id="toggle-monitoring">
+                        <i class="fas fa-play"></i>
+                        Start Monitoring
+                    </button>
+                </div>
+                
+                <div class="pipeline-visualization">
+                    <div class="pipeline-stage">
+                        <div class="stage-icon">
+                            <i class="fas fa-rss"></i>
+                        </div>
+                        <h4>Content Ingestion</h4>
+                        <div class="flow-particles">
+                            <div class="particle-flow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pipeline-stage">
+                        <div class="stage-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>AI Analysis</h4>
+                        <div class="flow-particles">
+                            <div class="particle-flow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="pipeline-stage">
+                        <div class="stage-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h4>Detection Alert</h4>
+                    </div>
+                </div>
+
+                <div class="live-feed">
+                    <div class="feed-header">
+                        <h3>Live Content Feed</h3>
+                        <div class="feed-status">
+                            <span class="status-dot"></span>
+                            <span id="feed-status-text">Monitoring Stopped</span>
+                        </div>
+                    </div>
+                    <div class="feed-content" id="live-feed-content">
+                        <!-- Live feed items will appear here -->
+                    </div>
+                </div>
+
+                <div class="network-graph">
+                    <h3>Source Credibility Network</h3>
+                    <div class="graph-container">
+                        <div class="network-nodes">
+                            <div class="network-node high-credibility" style="transform: translate(100px, 50px)">
+                                <span>Reuters</span>
+                                <div class="credibility-score">0.96</div>
+                            </div>
+                            <div class="network-node medium-credibility" style="transform: translate(200px, 120px)">
+                                <span>CNN</span>
+                                <div class="credibility-score">0.87</div>
+                            </div>
+                            <div class="network-node low-credibility" style="transform: translate(50px, 180px)">
+                                <span>Unknown Blog</span>
+                                <div class="credibility-score">0.23</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics View -->
+        <section id="analytics-view" class="view">
+            <div class="analytics-container">
+                <div class="analytics-header">
+                    <h2>Analytics & Insights</h2>
+                    <p>Comprehensive analysis of detection patterns and trends</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Detection Trends</h3>
+                        <div class="chart-container-3d">
+                            <canvas id="trends-chart" style="position: relative; height: 300px;"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Source Distribution</h3>
+                        <div class="chart-container-3d">
+                            <canvas id="sources-chart" style="position: relative; height: 300px;"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Classification Breakdown</h3>
+                        <div class="classification-stats">
+                            <div class="stat-item authentic">
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 73%"></div>
+                                </div>
+                                <span class="stat-label">Authentic: 73%</span>
+                            </div>
+                            <div class="stat-item misinformation">
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 27%"></div>
+                                </div>
+                                <span class="stat-label">Misinformation: 27%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Processing Performance</h3>
+                        <div class="performance-metrics">
+                            <div class="metric">
+                                <span class="metric-value">1.2s</span>
+                                <span class="metric-label">Avg Processing Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">95.3%</span>
+                                <span class="metric-label">Accuracy Rate</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99.8%</span>
+                                <span class="metric-label">Uptime</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings View -->
+        <section id="settings-view" class="view">
+            <div class="settings-container">
+                <div class="settings-header">
+                    <h2>Settings & Configuration</h2>
+                    <p>Customize your misinformation detection experience</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Visual Effects</h3>
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="enable-3d-effects" checked>
+                                <span class="checkmark"></span>
+                                Enable 3D Effects
+                            </label>
+                            <label class="setting-label">
+                                <input type="checkbox" id="enable-particles" checked>
+                                <span class="checkmark"></span>
+                                Particle Animations
+                            </label>
+                            <label class="setting-label">
+                                <input type="checkbox" id="reduce-motion">
+                                <span class="checkmark"></span>
+                                Reduce Motion
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Detection Settings</h3>
+                        <div class="setting-group">
+                            <div class="form-group">
+                                <label class="form-label">Confidence Threshold</label>
+                                <input type="range" class="slider" min="0.5" max="1.0" step="0.05" value="0.8" id="confidence-threshold">
+                                <span class="slider-value">0.8</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Detection Model</label>
+                                <select class="form-control" id="detection-model">
+                                    <option value="advanced">Advanced Neural Network</option>
+                                    <option value="standard">Standard ML Model</option>
+                                    <option value="fast">Fast Detection</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="email-alerts" checked>
+                                <span class="checkmark"></span>
+                                Email Alerts
+                            </label>
+                            <label class="setting-label">
+                                <input type="checkbox" id="browser-notifications">
+                                <span class="checkmark"></span>
+                                Browser Notifications
+                            </label>
+                            <label class="setting-label">
+                                <input type="checkbox" id="sound-alerts">
+                                <span class="checkmark"></span>
+                                Sound Alerts
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Data Export</h3>
+                        <div class="setting-group">
+                            <button class="btn btn--secondary">
+                                <i class="fas fa-download"></i>
+                                Export Analysis History
+                            </button>
+                            <button class="btn btn--secondary">
+                                <i class="fas fa-chart-bar"></i>
+                                Export Analytics Report
+                            </button>
+                            <button class="btn btn--outline">
+                                <i class="fas fa-trash"></i>
+                                Clear All Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../src/app.js"></script>
+</body>
+</html>
